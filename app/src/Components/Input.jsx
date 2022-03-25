@@ -19,10 +19,10 @@ export const Input = () => {
   }, []);
 
   
-    const url = "http://localhost:4000/projects";
+    const url2 = "http://localhost:4000/projects";
   
     const fetchProjects = async () => {
-      const response = await fetch(url);
+      const response = await fetch(url2);
       const json = await response.json();
   
       return json;
