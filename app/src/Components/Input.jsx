@@ -109,34 +109,35 @@ export const Input = (props) => {
         </div>
 
         {/* Dropdown */}
+        <div className="d-flex justify-content-between gap-5">
+          <select
+            name="company"
+            id="company"
+            className="form-control my-5"
+            onChange={(e) => setCompany(e.target.value)}
+          >
+            <option>Choose a company</option>
+            {companies.map((company) => (
+              <option key={company.id} value={company.id}>
+                {company.name}
+              </option>
+            ))}
+          </select>
 
-        <select
-          name="company"
-          id="company"
-          className="my-5 mx-2"
-          onChange={(e) => setCompany(e.target.value)}
-        >
-          <option>Choose a company</option>
-          {companies.map((company) => (
-            <option key={company.id} value={company.id}>
-              {company.name}
-            </option>
-          ))}
-        </select>
-
-        <select
-          name="project"
-          id="project"
-          className="my-5 mx-2"
-          onChange={(e) => setProject(e.target.value)}
-        >
-          <option>Choose a project</option>
-          {projects.map((project) => (
-            <option key={project.id} value={project.id}>
-              {project.name}
-            </option>
-          ))}
-        </select>
+          <select
+            name="project"
+            id="project"
+            className="form-control my-5"
+            onChange={(e) => setProject(e.target.value)}
+          >
+            <option>Choose a project</option>
+            {projects.map((project) => (
+              <option key={project.id} value={project.id}>
+                {project.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </form>
       <button
         className="register-btn btn btn-primary container w-25 mb-5"

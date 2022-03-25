@@ -26,15 +26,6 @@
       "comment": "im tired!",
       "companyId": 3,
       "projectId": 3
-    },
-    {
-      "userId": "dfcx",
-      "minutes": "222",
-      "date": "2022-03-26",
-      "comment": "gjghgjhgjh",
-      "companyId": "1",
-      "projectId": "1",
-      "id": 4
     }
   ],
   "projects": [

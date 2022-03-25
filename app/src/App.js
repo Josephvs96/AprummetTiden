@@ -5,13 +5,11 @@ import { Input } from "./Components/Input";
 function addTimeReport(timeReport) {
   // Simple POST request with a JSON body using fetch
   const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(timeReport)
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(timeReport),
   };
-  fetch('http://localhost:4000/timeReport', requestOptions)
-      
-      
+  fetch("http://localhost:4000/timeReport", requestOptions);
 }
 
 function App() {
@@ -25,7 +23,7 @@ function App() {
 
   const handleAddTimeReport = (timeReport) => {
     // Post to the API
-    addTimeReport(timeReport)
+    addTimeReport(timeReport);
 
     setTimeReports((prevState) => {
       return [...prevState, timeReport];
@@ -33,7 +31,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="col-8 offset-2">
       <Input onAddTimeReport={handleAddTimeReport} />
       <TotalTimeTable timeReports={timeReports} />
     </div>
