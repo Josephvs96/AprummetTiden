@@ -1,6 +1,19 @@
 import { useState, useEffect } from "react";
 import TotalTimeTable from "./Components/TimeTable/TotalTimeTable";
 import { Input } from "./Components/Input";
+
+function addTimeReport(timeReport) {
+  // Simple POST request with a JSON body using fetch
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(timeReport)
+  };
+  fetch('http://localhost:4000/timeReport', requestOptions)
+      
+      
+}
+
 function App() {
   const [timeReports, setTimeReports] = useState([]);
 
@@ -12,6 +25,7 @@ function App() {
 
   const handleAddTimeReport = (timeReport) => {
     // Post to the API
+    addTimeReport(timeReport)
 
     setTimeReports((prevState) => {
       return [...prevState, timeReport];
