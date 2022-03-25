@@ -18,25 +18,41 @@ export const Input = () => {
     });
   }, []);
 
-  
-    const url = "http://localhost:4000/projects";
-  
-    const fetchProjects = async () => {
-      const response = await fetch(url);
-      const json = await response.json();
-  
-      return json;
-    };
-  
-    const [projects, setProjects] = React.useState([]);
-  
-    React.useEffect(() => {
-      fetchProjects().then((result) => {
-        setProjects(result);
-      });
-    }, []);
+  const url2 = "http://localhost:4000/projects";
 
-  console.log(projects);
+  const fetchProjects = async () => {
+    const response = await fetch(url2);
+    const json = await response.json();
+
+    return json;
+  };
+
+  const [projects, setProjects] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchProjects().then((result) => {
+      setProjects(result);
+    });
+  }, []);
+
+  const [userId, setUserId] = React.useState("");
+  const [minutes, setMinutes] = React.useState(0);
+  const [date, setDate] = React.useState();
+  const [comments, setComments] = React.useState();
+  const [companyId, setCompany] = React.useState();
+  const [projectId, setProject] = React.useState();
+
+  function registerTime() {
+    const timeToPost = {
+      userId,
+      minutes,
+      date,
+      comments,
+      companyId,
+      projectId,
+    };
+    console.log(timeToPost);
+  }
 
   return (
     <>
@@ -51,6 +67,7 @@ export const Input = () => {
             className="form-control"
             id="userId"
             placeholder="User Id"
+            onChange={(e) => setUserId(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -62,6 +79,7 @@ export const Input = () => {
             className="form-control"
             id="minutes"
             placeholder="Total number of minutes spent..."
+            onChange={(e) => setMinutes(e.target.value)}
           />
         </div>
 
@@ -74,6 +92,7 @@ export const Input = () => {
             className="form-control"
             id="date"
             placeholder="Enter date"
+            onChange={(e) => setDate(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -85,13 +104,19 @@ export const Input = () => {
             className="form-control"
             id="comment"
             placeholder="Write your comment here"
+            onChange={(e) => setComments(e.target.value)}
           />
         </div>
 
         {/* Dropdown */}
 
-        <label htmlFor="company">Choose a company:</label>
-        <select name="company" id="company" className="my-5 mx-2">
+        <select
+          name="company"
+          id="company"
+          className="my-5 mx-2"
+          onChange={(e) => setCompany(e.target.value)}
+        >
+          <option>Choose a company</option>
           {companies.map((company) => (
             <option key={company.id} value={company.id}>
               {company.name}
@@ -99,17 +124,26 @@ export const Input = () => {
           ))}
         </select>
 
-        <label htmlFor="project">Choose a project:</label>
-        <select name="project" id="project" className="my-5 mx-2">
-        {projects.map((project) => (
+        <select
+          name="project"
+          id="project"
+          className="my-5 mx-2"
+          onChange={(e) => setProject(e.target.value)}
+        >
+          <option>Choose a project</option>
+          {projects.map((project) => (
             <option key={project.id} value={project.id}>
               {project.name}
             </option>
           ))}
         </select>
-
-        <button className="register-btn btn btn-primary">Register</button>
       </form>
+      <button
+        className="register-btn btn btn-primary container w-25"
+        onClick={registerTime}
+      >
+        Register
+      </button>
     </>
   );
 };
