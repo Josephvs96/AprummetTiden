@@ -6,7 +6,7 @@
       "minutes": 120,
       "date": "2022-01-01",
       "comment": "hard days work",
-      "customerId": 1,
+      "companyId": 1,
       "projectId": 1
     },
     {
@@ -15,7 +15,7 @@
       "minutes": 100,
       "date": "2022-02-01",
       "comment": "easy life",
-      "customerId": 2,
+      "companyId": 2,
       "projectId": 2
     },
     {
@@ -24,7 +24,7 @@
       "minutes": 80,
       "date": "2022-03-01",
       "comment": "im tired!",
-      "customerId": 3,
+      "companyId": 3,
       "projectId": 3
     }
   ],
@@ -51,7 +51,7 @@
       "description": "A medium project"
     }
   ],
-  "company": [
+  "companies": [
     {
       "id": 1,
       "name": "Kalles Consulting"

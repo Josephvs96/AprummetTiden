@@ -1,12 +1,31 @@
 import React from "react";
 
 export const Input = () => {
+  const url = "http://localhost:4000/companies";
+
+  const fetchCompanies = async () => {
+    const response = await fetch(url);
+    const json = await response.json();
+
+    return json;
+  };
+
+  const [companies, setCompanies] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchCompanies().then((result) => {
+      setCompanies(result);
+    });
+  }, []);
+
+  console.log(companies);
+
   return (
     <>
       <h1 className="mt-3">Time Reporting System</h1>
       <form className="container mt-5">
         <div className="form-group">
-          <label className="userId mt-3" for="userId">
+          <label className="userId mt-3" htmlFor="userId">
             User Id
           </label>
           <input
@@ -17,7 +36,7 @@ export const Input = () => {
           />
         </div>
         <div className="form-group">
-          <label className="minutes mt-3" for="minutes">
+          <label className="minutes mt-3" htmlFor="minutes">
             Minutes
           </label>
           <input
@@ -29,7 +48,7 @@ export const Input = () => {
         </div>
 
         <div className="form-group">
-          <label className="date mt-3" for="date">
+          <label className="date mt-3" htmlFor="date">
             Date
           </label>
           <input
@@ -40,7 +59,7 @@ export const Input = () => {
           />
         </div>
         <div className="form-group">
-          <label className="comments mt-3" for="comment">
+          <label className="comments mt-3" htmlFor="comment">
             Comments
           </label>
           <textarea
@@ -53,15 +72,16 @@ export const Input = () => {
 
         {/* Dropdown */}
 
-        <label for="company">Choose a company:</label>
+        <label htmlFor="company">Choose a company:</label>
         <select name="company" id="company" className="my-5 mx-2">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
+          {companies.map((company) => (
+            <option key={company.id} value={company.id}>
+              {company.name}
+            </option>
+          ))}
         </select>
 
-        <label for="project">Choose a project:</label>
+        <label htmlFor="project">Choose a project:</label>
         <select name="project" id="project" className="my-5 mx-2">
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
