@@ -1,29 +1,30 @@
-import { useState, useEffect } from 'react';
-import TotalTimeTable from './Components/TimeTable/TotalTimeTable';
+import { useState, useEffect } from "react";
+import TotalTimeTable from "./Components/TimeTable/TotalTimeTable";
 
 function App() {
-	const [timeReports, setTimeReports] = useState([]);
+  const [timeReports, setTimeReports] = useState([]);
 
-	useEffect(() => {
-		fetch('http://localhost:4000/timeReport')
-			.then((response) => response.json())
-			.then((data) => setTimeReports(data));
-	}, []);
+  useEffect(() => {
+    fetch("http://localhost:4000/timeReport")
+      .then((response) => response.json())
+      .then((data) => setTimeReports(data));
+  }, []);
 
-	const handleAddTimeReport = (timeReport) => {
-		// Post to the API
+  const handleAddTimeReport = (timeReport) => {
+    // Post to the API
 
-		setTimeReports((state) => {
-			//return [...state, timeReport];
-			return state.push(timeReport);
-		});
-	};
+    setTimeReports((state) => {
+      //return [...state, timeReport];
+      return state.push(timeReport);
+    });
+  };
 
-	return (
-		<div>
-			<TotalTimeTable timeReports={timeReports} />
-		</div>
-	);
+  return (
+    <div>
+      <Input />
+      <TotalTimeTable timeReports={timeReports} />
+    </div>
+  );
 }
 
 export default App;
