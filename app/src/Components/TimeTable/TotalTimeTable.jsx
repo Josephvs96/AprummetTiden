@@ -1,15 +1,6 @@
-import { useState, useEffect } from 'react';
 import { TotalTimeRow } from './TotalTimeRow';
 
-const TotalTimeTable = () => {
-	const [timeReports, setTimeReports] = useState([]);
-
-	useEffect(() => {
-		fetch('http://localhost:4000/timeReport')
-			.then((response) => response.json())
-			.then((data) => setTimeReports(data));
-	}, []);
-
+const TotalTimeTable = ({ timeReports }) => {
 	return (
 		<div className='container'>
 			<table className='table table-hover table-striped'>
