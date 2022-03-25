@@ -17,7 +17,9 @@ export const TotalTimeRow = ({ timeRepport }) => {
 		const caluclateTotalTime = () => {
 			const hours = Math.floor(timeRepport.minutes / 60);
 			const minutes = timeRepport.minutes % 60;
-			const totalTimeText = `${hours}h ${minutes}min`;
+			const totalTimeText = `${hours}h ${
+				minutes > 0 ? minutes + 'min' : ''
+			}`;
 			setTotalTime(totalTimeText);
 		};
 
