@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import TotalTimeTable from "./Components/TimeTable/TotalTimeTable";
-
+import { Input } from "./Components/Input";
 function App() {
   const [timeReports, setTimeReports] = useState([]);
 
@@ -13,15 +13,14 @@ function App() {
   const handleAddTimeReport = (timeReport) => {
     // Post to the API
 
-    setTimeReports((state) => {
-      //return [...state, timeReport];
-      return state.push(timeReport);
+    setTimeReports((prevState) => {
+      return [...prevState, timeReport];
     });
   };
 
   return (
     <div>
-      <Input />
+      <Input onAddTimeReport={handleAddTimeReport} />
       <TotalTimeTable timeReports={timeReports} />
     </div>
   );

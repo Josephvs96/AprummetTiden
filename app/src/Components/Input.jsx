@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Input = () => {
+export const Input = (props) => {
   const url = "http://localhost:4000/companies";
 
   const fetchCompanies = async () => {
@@ -38,7 +38,7 @@ export const Input = () => {
   const [userId, setUserId] = React.useState("");
   const [minutes, setMinutes] = React.useState(0);
   const [date, setDate] = React.useState();
-  const [comments, setComments] = React.useState();
+  const [comment, setComments] = React.useState();
   const [companyId, setCompany] = React.useState();
   const [projectId, setProject] = React.useState();
 
@@ -47,16 +47,16 @@ export const Input = () => {
       userId,
       minutes,
       date,
-      comments,
+      comment,
       companyId,
       projectId,
     };
-    console.log(timeToPost);
+    props.onAddTimeReport(timeToPost);
   }
 
   return (
     <>
-      <h1 className="mt-3">Time Reporting System</h1>
+      <h1 className="mt-3 text-center">Time Reporting System</h1>
       <form className="container mt-5">
         <div className="form-group">
           <label className="userId mt-3" htmlFor="userId">
@@ -139,10 +139,10 @@ export const Input = () => {
         </select>
       </form>
       <button
-        className="register-btn btn btn-primary container w-25"
+        className="register-btn btn btn-primary container w-25 mb-5"
         onClick={registerTime}
       >
-        Register
+        Register Baby!
       </button>
     </>
   );
