@@ -18,7 +18,25 @@ export const Input = () => {
     });
   }, []);
 
-  console.log(companies);
+  
+    const url = "http://localhost:4000/projects";
+  
+    const fetchProjects = async () => {
+      const response = await fetch(url);
+      const json = await response.json();
+  
+      return json;
+    };
+  
+    const [projects, setProjects] = React.useState([]);
+  
+    React.useEffect(() => {
+      fetchProjects().then((result) => {
+        setProjects(result);
+      });
+    }, []);
+
+  console.log(projects);
 
   return (
     <>
@@ -83,10 +101,11 @@ export const Input = () => {
 
         <label htmlFor="project">Choose a project:</label>
         <select name="project" id="project" className="my-5 mx-2">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
+        {projects.map((project) => (
+            <option key={project.id} value={project.id}>
+              {project.name}
+            </option>
+          ))}
         </select>
 
         <button className="register-btn btn btn-primary">Register</button>
