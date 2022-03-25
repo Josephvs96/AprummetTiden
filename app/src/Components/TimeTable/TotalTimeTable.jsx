@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { TotalTimeRow } from './TotalTimeRow';
 
 const TotalTimeTable = () => {
-	const [timeRepports, setTimeRepports] = useState([]);
+	const [timeReports, setTimeReports] = useState([]);
 
 	useEffect(() => {
 		fetch('http://localhost:4000/timeReport')
 			.then((response) => response.json())
-			.then((data) => setTimeRepports(data));
+			.then((data) => setTimeReports(data));
 	}, []);
 
 	return (
@@ -24,8 +24,8 @@ const TotalTimeTable = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{timeRepports.map((report) => (
-						<TotalTimeRow key={report.id} timeRepport={report} />
+					{timeReports.map((report) => (
+						<TotalTimeRow key={report.id} timeReport={report} />
 					))}
 				</tbody>
 			</table>
